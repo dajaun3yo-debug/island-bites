@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Island Bites 🍔</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #fff8f0;
+  color: #222;
+}
+
+/* NAVIGATION */
+
+nav {
+  background: #e85d04;
+  color: white;
+  padding: 18px 7%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+nav button {
+  background: white;
+  color: #e85d04;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* HERO */
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    #e85d04,
+    #ffba08
+  );
+
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.hero button {
+  padding: 14px 25px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  color: #e85d04;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+/* MENU */
+
+.menu {
+  padding: 50px 7%;
+}
+
+.menu h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 32px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 25px;
+}
+
+.food {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,0.08);
+}
+
+.food-image {
+  height: 150px;
+
+  background: #ffe8cc;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 65px;
+
+  margin-bottom: 15px;
+}
+
+.food h3 {
+  margin-bottom: 8px;
+}
+
+.food p {
+  color: #666;
+}
+
+.price {
+  color: #e85d04;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.food button {
+  width: 100%;
+  padding: 12px;
+
+  background: #e85d04;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+/* ORDER SECTION */
+
+.order {
+  background: white;
+  padding: 50px 7%;
+}
+
+.order h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.order-box {
+  max-width: 600px;
+  margin: auto;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  font-size: 16px;
+}
+
+textarea {
+  height: 100px;
+}
+
+.place-order {
+  width: 100%;
+  margin-top: 20px;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #16a34a;
+  color: white;
+
+  font-size: 17px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+/* ORDER SUMMARY */
+
+#orderSummary {
+  margin-top: 25px;
+  padding: 20px;
+
+  background: #fff3cd;
+
+  border-radius: 10px;
+
+  display: none;
+}
+
+
+/* FOOTER */
+
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 30px;
+}
+
+footer p {
+  margin-top: 8px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+  <div class="logo">
+    🍔 Island Bites
+  </div>
+
+  <button onclick="goToOrder()">
+    Order Now
+  </button>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <h1>
+    Fresh Food. Fast Service. 🔥
+  </h1>
+
+  <p>
+    Delicious meals made fresh for you.
+  </p>
+
+  <button onclick="goToMenu()">
+    View Menu
+  </button>
+
+</section>
+
+
+<!-- MENU -->
+
+<section class="menu" id="menu">
+
+  <h2>
+    🍽️ Our Menu
+  </h2>
+
+
+  <div class="food-grid">
+
+
+    <!-- BURGER -->
+
+    <div class="food">
+
+      <div class="food-image">
+        🍔
+      </div>
+
+      <h3>
+        Classic Burger Combo
+      </h3>
+
+      <p>
+        Beef burger with lettuce, tomato and cheese with Fries, a Drink and Chicken
+      </p>
+
+      <div class="price">
+        $1000
+      </div>
+
+      <button onclick="selectFood('Classic Burger')">
+        Add to Order
+      </button>
+
+    </div>
+
+
+    <!-- CHICKEN -->
+
+    <div class="food">
+
+      <div class="food-image">
+        🍗
+      </div>
+
+      <h3>
+        Fried Chicken Combo
+      </h3>
+
+      <p>
+        Crispy seasoned chicken served hot with fries and a Drink.
+      </p>
+
+      <div class="price">
+        $750
+      </div>
+
+      <button onclick="selectFood('Fried Chicken')">
+        Add to Order
+      </button>
+
+    </div>
+
+
+    <!-- QUESADILLA -->
+
+    <div class="food">
+
+      <div class="food-image">
+        🌯
+      </div>
+
+      <h3>
+        Quesadilla Combo
+      </h3>
+
+      <p>
+        Crunchy, Juicy Cheese-filled Quesadilla with Fries, Chicken and a Drink.
+      </p>
+
+      <div class="price">
+        $1000
+      </div>
+
+      <button onclick="selectFood('Cheese Pizza')">
+        Add to Order
+      </button>
+
+    </div>
+
+<!-- QUESADILLA -->
+
+    <div class="food">
+
+      <div class="food-image">
+        🌭
+      </div>
+
+      <h3>
+        Loaded Hotdog Combo
+      </h3>
+
+      <p>
+        Customizable Loaded Hotdog with Fries, Chicken and a Drink.
+      </p>
+
+      <div class="price">
+        $1000
+      </div>
+
+      <button onclick="selectFood('Cheese Pizza')">
+        Add to Order
+      </button>
+
+    </div>
+
+    <!-- FRIES -->
+
+    <div class="food">
+
+      <div class="food-image">
+        🍟
+      </div>
+
+      <h3>
+        French Fries 
+      </h3>
+
+      <p>
+        Crispy golden fries with seasoning.
+      </p>
+
+      <div class="price">
+        $250
+      </div>
+
+      <button onclick="selectFood('French Fries')">
+        Add to Order
+      </button>
+
+    </div>
+
+
+    <!-- JUICE -->
+
+    <div class="food">
+
+      <div class="food-image">
+        🥤
+      </div>
+
+      <h3>
+        Busta
+      </h3>
+
+      <p>
+        Cold and refreshing tropical fruit punch.
+      </p>
+
+      <div class="price">
+        $250
+      </div>
+
+      <button onclick="selectFood('Fruit Punch')">
+        Add to Order
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ORDER FORM -->
+
+<section class="order" id="order">
+
+  <h2>
+    📝 Place Your Order
+  </h2>
+
+
+  <div class="order-box">
+
+    <label>
+      Your Name
+    </label>
+
+    <input
+      type="text"
+      id="customerName"
+      placeholder="Enter your name"
+    >
+
+
+    <label>
+      Phone Number
+    </label>
+
+    <input
+      type="tel"
+      id="phone"
+      placeholder="Enter your phone number"
+    >
+
+
+    <label>
+      Selected Food
+    </label>
+
+    <select id="foodChoice">
+
+      <option>
+        Classic Burger Combo
+      </option>
+
+      <option>
+        Fried Chicken Combo
+      </option>
+
+      <option>
+        Quesadilla Combo
+      </option>
+
+      <option>
+        Loaded Hotdog Combo
+      </option>
+      
+      <option>
+        French Fries
+      </option>
+      
+      <option>
+        Busta
+      </option>
+
+    </select>
+
+
+    <label>
+      Quantity
+    </label>
+
+    <input
+      type="number"
+      id="quantity"
+      value="1"
+      min="1"
+      max="6"
+    >
+    
+
+
+    <label>
+      Special Instructions
+    </label>
+
+    <textarea
+      id="instructions"
+      placeholder="Example: No onions, extra cheese, No Combo, Add Chicken Combo..."
+    ></textarea>
+
+
+    <button
+      class="place-order"
+      onclick="placeOrder()"
+    >
+      Place Order 🍔
+    </button>
+
+
+    <div id="orderSummary"></div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h3>
+    🍔 Island Bites
+  </h3>
+
+  <p>
+    Fresh food made with love.
+  </p>
+
+  <p>
+    📞 876-555-1234
+  </p>
+
+  <p>
+    © 2026 Island Bites
+  </p>
+
+</footer>
+
+
+<script>
+
+
+/* SCROLL TO MENU */
+
+function goToMenu() {
+
+  document
+    .getElementById("menu")
+    .scrollIntoView();
+
+}
+
+
+/* SCROLL TO ORDER */
+
+function goToOrder() {
+
+  document
+    .getElementById("order")
+    .scrollIntoView();
+
+}
+
+
+/* SELECT FOOD */
+
+function selectFood(food) {
+
+  document
+    .getElementById("foodChoice")
+    .value = food;
+
+  goToOrder();
+
+}
+
+
+/* PLACE ORDER */
+
+function placeOrder() {
+
+  let name =
+    document.getElementById("customerName").value;
+
+  let phone =
+    document.getElementById("phone").value;
+
+  let food =
+    document.getElementById("foodChoice").value;
+
+  let quantity =
+    document.getElementById("quantity").value;
+
+  let instructions =
+    document.getElementById("instructions").value;
+
+
+  if (name === "" || phone === "") {
+
+    alert("Please enter your name and phone number.");
+
+    return;
+
+  }
+
+
+  let summary =
+    document.getElementById("orderSummary");
+
+
+  summary.style.display = "block";
+
+
+  summary.innerHTML = `
+
+    <h3>✅ Order Received!</h3>
+
+    <br>
+
+    <p>
+      <strong>Name:</strong> ${name}
+    </p>
+
+    <p>
+      <strong>Phone:</strong> ${phone}
+    </p>
+
+    <p>
+      <strong>Food:</strong> ${food}
+    </p>
+
+    <p>
+      <strong>Quantity:</strong> ${quantity}
+    </p>
+
+    <p>
+      <strong>Instructions:</strong>
+      ${instructions || "None"}
+    </p>
+
+    <br>
+
+    <p>
+      We will contact you to confirm your order.
+    </p>
+
+  `;
+
+}
+
+</script>
+
+
+</body>
+
+</html>
